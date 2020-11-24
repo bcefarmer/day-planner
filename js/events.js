@@ -1,0 +1,63 @@
+/*
+GIVEN I am using a daily planner to create a schedule
+WHEN I open the planner
+THEN the current day is displayed at the top of the calendar
+WHEN I scroll down
+THEN I am presented with time blocks for standard business hours
+WHEN I view the time blocks for that day
+THEN each time block is color-coded to indicate whether it is in the past, present, or future
+WHEN I click into a time block
+THEN I can enter an event
+WHEN I click the save button for that time block
+THEN the text for that event is saved in local storage
+WHEN I refresh the page
+THEN the saved events persist
+*/
+
+
+$( document ).ready(function(){
+    var now = moment();
+    var nowFormat = now.format("dddd, MMMM Do");
+    $("#currentDay").text(nowFormat);
+
+/*    
+Because this app uses a modal box to collect information, variable global_current_record
+is used to hold the id of the time-slot that was originally clicked.
+*/ 
+
+let global_current_record = "";
+
+/*    
+On clicking time-block, bring up a modal to enter event information.
+*/ 
+
+$(".time-block").on("click", function(event){
+event.stopImmediatePropagation();
+var targetElement = event.target;
+var identifyBlock = targetElement.id;
+var identifyTime = targetElement.getAttribute("data-time");
+// ---- Stick the time in the title
+global_current_record = identifyBlock;
+
+$("#eventModal").modal('show');
+$(".modal-title").text(identifyTime);
+var test;
+})
+
+/*    
+After user clicks button to submit event......
+*/ 
+
+$("#insertEvent").on("click", function(event){
+    var idString = "#" + global_current_record;
+    var eventInput = $("#enter-data").val();
+    // Evaluate to make sure the text-area is not an empty string.
+    var trimmedInput = eventInput.trim();
+
+
+    $(idString).find("p").text(eventInput);
+    global_current_record = "";
+    $("#eventModal").modal('hide');
+    })
+
+})
