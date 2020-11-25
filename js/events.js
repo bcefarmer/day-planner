@@ -78,9 +78,9 @@ $("#insertEvent").on("click", function(event){
     alter_localStorageObject();
     })
 
-
-  
-
+/*
+  LOCAL STORAGE
+*/
 
 function alter_localStorageObject(){
    let event_array = [];
@@ -91,10 +91,11 @@ function alter_localStorageObject(){
   
    
    
-    if( $(this)[0].children[0].childNodes[3].children[0].innerHTML != null && $(this)[0].children[0].childNodes[3].children[0].innerHTML != undefined && $(this)[0].children[0].childNodes[3].children[0].innerHTML != null ){
+    if( $(this)[0].children[0].childNodes[3].children[0].innerHTML != null && $(this)[0].children[0].childNodes[3].children[0].innerHTML != undefined && $(this)[0].children[0].childNodes[3].children[0].innerHTML != null  && $(this)[0].children[0].childNodes[3].children[0].innerHTML != "" ){
                         var currentLine ="{id :" + $(this)[0].id + " , " + "eventText : " + $(this)[0].children[0].childNodes[3].children[0].innerHTML + "}";
                         event_array.push(currentLine);
                        }
+                      
                       
     
     var objString =  JSON.stringify(event_array);
