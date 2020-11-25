@@ -16,6 +16,8 @@ THEN the saved events persist
 
 
 $( document ).ready(function(){
+
+
     var now = moment();
     var nowFormat = now.format("dddd, MMMM Do");
     $("#currentDay").text(nowFormat);
@@ -33,12 +35,17 @@ On clicking time-block, bring up a modal to enter event information.
 
 $(".time-block").on("click", function(event){
 event.stopImmediatePropagation();
-var targetElement = event.target;
+targetElement = event.target.closest("section");
+//var targetElement = event.target;
 var identifyBlock = targetElement.id;
-var identifyTime = targetElement.getAttribute("data-time");
-// ---- Stick the time in the title
-global_current_record = identifyBlock;
 
+
+// *******************
+//alert(currentContent);
+// *******************
+
+var identifyTime = targetElement.getAttribute("data-time");
+global_current_record = identifyBlock;
 $("#eventModal").modal('show');
 $(".modal-title").text(identifyTime);
 var test;
@@ -49,15 +56,51 @@ After user clicks button to submit event......
 */ 
 
 $("#insertEvent").on("click", function(event){
+    event.preventDefault();
     var idString = "#" + global_current_record;
     var eventInput = $("#enter-data").val();
     // Evaluate to make sure the text-area is not an empty string.
     var trimmedInput = eventInput.trim();
 
+     
+    if($(idString).find("p") === "" || $(idString).find("p") === null || $(idString).find("p") === undefined ){
+      $(idString).find("p").text(trimmedInput);  
+    }
+    else{
+        $(idString).find("p").empty();
+        $(idString).find("p").text(trimmedInput);    
+    }
 
-    $(idString).find("p").text(eventInput);
+
+    
     global_current_record = "";
     $("#eventModal").modal('hide');
+    alter_localStorageObject();
     })
 
-})
+
+  
+
+
+function alter_localStorageObject(){
+   let event_array = [];
+  
+       
+ $("section").each( function(){
+   //var current_section = $(this);
+  
+   
+   
+    if( $(this)[0].children[0].childNodes[3].children[0].innerHTML != null && $(this)[0].children[0].childNodes[3].children[0].innerHTML != undefined && $(this)[0].children[0].childNodes[3].children[0].innerHTML != null ){
+                        var currentLine ="{id :" + $(this)[0].id + " , " + "eventText : " + $(this)[0].children[0].childNodes[3].children[0].innerHTML + "}";
+                        event_array.push(currentLine);
+                       }
+                      
+    
+    var objString =  JSON.stringify(event_array);
+    localStorage.setItem(nowFormat, objString);
+    
+
+                      })
+}
+})                    
