@@ -48,7 +48,15 @@ border: 1px solid black;
 .row {
   height: 125px;
   border-top: 1px solid white;
-  padding-top: 5px;
+  padding-top: 20px;
+ }
+
+ .justify-content-start{
+   padding: 12px;
+ }
+
+ .justify-content-end{
+  padding: 12px;
  }
 
 .blueText{
