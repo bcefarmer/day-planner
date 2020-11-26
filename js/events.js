@@ -29,9 +29,13 @@ $( document ).ready(function(){
     var nowFormat = now.format("dddd, MMMM Do");
     $("#currentDay").text(nowFormat);
 
-       // Current Timestamp
+     
+   function populatePastPresent(){
     var time = moment();
     var timeFormat = time.valueOf();
+    }
+
+
 
  /*      
 Because this app uses a modal box to collect information, variable global_current_record
@@ -47,6 +51,8 @@ let global_current_record = "";
 if(localStorage.getItem(nowFormat) != undefined && localStorage.getItem(nowFormat) != null && localStorage.getItem(nowFormat) != "" ){
    import_localStorage_events();
  }
+
+
    
  
 //------------------------------

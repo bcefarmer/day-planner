@@ -1,7 +1,8 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Julius Sans One', sans-serif;
   font-size: 16px;
   line-height: 1;
+  background-color:	#F5F5F5;
 }
 
 textarea{
@@ -18,16 +19,21 @@ textarea{
 
 .jumbotron {
   text-align: center;
-  background-color: transparent;
-  color: black;
+  background-color: #3481ab;
+  color: white;
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: .5px solid lightgrey;
 }
 
 .description{
   white-space: pre-wrap;
 }
 
+section{
+background-color: white;
+border: 1px solid black;
+
+}
 .time-block{
   /*text-align: center;*/
   border-radius: 15px;
@@ -42,8 +48,15 @@ textarea{
 .row {
   height: 125px;
   border-top: 1px solid white;
- 
+  padding-top: 5px;
+ }
+
+.blueText{
+  font-size: 35px;
+  font-weight: lighter;
+  color: #3481ab;
 }
+
 
 /*
 .hour {
