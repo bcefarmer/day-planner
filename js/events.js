@@ -27,12 +27,36 @@ $( document ).ready(function(){
        // Current Date
     var now = moment();
     var nowFormat = now.format("dddd, MMMM Do");
+    var nowMilli = moment().unix();
+
+
+    $("section").attr("data-date", nowFormat);
     $("#currentDay").text(nowFormat);
+    
+
+    populatePastPresent();
 
      
    function populatePastPresent(){
-    var time = moment();
-    var timeFormat = time.valueOf();
+    
+    var activeDate= moment().format("L")
+
+    $(".time-block").each(function(){
+      var dTime = $(this).attr("data-time");
+      var fullString = activeDate + " " + dTime;
+      
+      if(moment(fullString).unix() < nowMilli){
+        $(this).find("span").css("background-color", "red");
+      }
+      else{
+        $(this).find("span").css("background-color", "green");
+      }
+      
+      
+
+  });
+    
+
     }
 
 
@@ -44,17 +68,18 @@ is used to hold the id of the time-slot that was originally clicked.
 
 let global_current_record = ""; 
 
-
-// Check to see if a local storage object exists for the current date.  If so
-// run function to populate previously-created events from storage.
+//--------------------------------
+/*
+Check to see if a local storage object exists for the current date.  If so
+run function to populate previously-created events from storage.  Basically
+just a function that evaluates and points to another function.
+*/
+//---------------------------------
 
 if(localStorage.getItem(nowFormat) != undefined && localStorage.getItem(nowFormat) != null && localStorage.getItem(nowFormat) != "" ){
    import_localStorage_events();
  }
 
-
-   
- 
 //------------------------------
    /*
    import_localStorage_events()
@@ -183,4 +208,6 @@ function alter_localStorageObject(){
 
 
 
-  })                    
+
+
+})                    
