@@ -24,9 +24,12 @@ $( document ).ready(function(){
    Used for date displays and defining local storage objects.
    */  
   //------------------------------
-       // Current Date
+
+       // Current Date for display
     var now = moment();
     var nowFormat = now.format("dddd, MMMM Do");
+
+       // Milliseconds for time comparisons
     var nowMilli = moment().unix();
 
 
@@ -36,9 +39,21 @@ $( document ).ready(function(){
 
     populatePastPresent();
 
-     
+    //------------------------------
+   /*
+   populatePastPresent();
+
+   Purpose: Compares times to current time, and changes the background
+   color of each timeblock circle according to past and future.
+
+   Parameters: N/A
+
+   Returns: N/A
+  
+   */  
+  //------------------------------ 
+      
    function populatePastPresent(){
-    
     var activeDate= moment().format("L")
 
     $(".time-block").each(function(){
@@ -46,22 +61,16 @@ $( document ).ready(function(){
       var fullString = activeDate + " " + dTime;
       
       if(moment(fullString).unix() < nowMilli){
-        $(this).find("span").css("background-color", "red");
+        $(this).find("span").css("background-color", "#ff9999");
       }
       else{
-        $(this).find("span").css("background-color", "green");
+        $(this).find("span").css("background-color", "#20B2AA");
       }
-      
-      
+   });   
+    }  
 
-  });
-    
-
-    }
-
-
-
- /*      
+  
+/*      
 Because this app uses a modal box to collect information, variable global_current_record
 is used to hold the id of the time-slot that was originally clicked.
 */ 
@@ -130,12 +139,14 @@ targetElement = event.target.closest("section");
 //var targetElement = event.target;
 var identifyBlock = targetElement.id;
 
-
+// grabs the string of the selected time.  this is stored is data attribute "data-time."
 var identifyTime = targetElement.getAttribute("data-time");
+// sets global_current_record to recognize which time block to change when "submit" button
+// is pressed.
 global_current_record = identifyBlock;
 $("#eventModal").modal('show');
 $(".modal-title").text(identifyTime);
-var test;
+
 })
 
 //------------------------------

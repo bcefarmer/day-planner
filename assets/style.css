@@ -40,6 +40,7 @@ border: none;
   border-radius: 50%;
   display: inline-block;
   margin-right: 15px;
+  margin-top: 25%;
 }
 .time-block{
   /*text-align: center;*/
@@ -65,7 +66,8 @@ border: none;
 
  .justify-content-center{
   padding: 12px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 20px;
  }
 
  .justify-content-end{
@@ -102,14 +104,9 @@ font-size: 25px;
 background-color: white;
 }
 
-.present {
-  background-color: #ff6961;
-  color: white;
-}
-
-.future {
-  background-color: #77dd77;
-  color: white;
+.close {
+  color: #fff; 
+  opacity: 1;
 }
 
 .saveBtn {
