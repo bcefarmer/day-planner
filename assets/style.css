@@ -15,22 +15,9 @@ body {
 }
 
 
-textarea{
-  background: white;
-  width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  resize: none;
-  color: #000000;
-  border: 0.5px solid grey;
-  padding: 5px;
-  height: 250px;
-}
-
-
 section{
 background-color: white;
 border: none;
-
 }
 
 .dot {
@@ -40,11 +27,12 @@ border: none;
   border-radius: 50%;
   display: inline-block;
   margin-right: 15px;
-  margin-top: 25%;
+  margin-top: -3px;
 }
+
 .time-block{
   /*text-align: center;*/
-  border-radius: 15px;
+  border-radius: 25px;
   margin-bottom: 25px;
   margin-left:25px;
   height: 150px;
@@ -61,13 +49,13 @@ border: none;
 
  .justify-content-start{
    padding: 12px;
-   
- }
+  }
 
  .justify-content-center{
   padding: 12px;
   font-family: 'Hind Siliguri', sans-serif;
   font-size: 20px;
+  height: 75%;
  }
 
  .justify-content-end{
@@ -78,21 +66,8 @@ border: none;
   font-size: 20px;
   font-weight: lighter;
   color: #3481ab;
-}
+  }
 
-
-/*
-.hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
-}
-
-.past {
-  background-color: #d3d3d3;
-  color: white;
-}
-*/
 
 .modal-header{
 background-color: #3481ab;
@@ -102,6 +77,17 @@ font-size: 25px;
 
 .modal-body{
 background-color: white;
+}
+
+textarea{
+  background: white;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  resize: none;
+  color: #000000;
+  border: 0.5px solid grey;
+  padding: 5px;
+  height: 250px;
 }
 
 .close {

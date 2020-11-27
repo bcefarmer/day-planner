@@ -29,8 +29,6 @@ $( document ).ready(function(){
     var now = moment();
     var nowFormat = now.format("dddd, MMMM Do");
 
-       // Milliseconds for time comparisons
-    var nowMilli = moment().unix();
 
 
     $("section").attr("data-date", nowFormat);
@@ -55,6 +53,8 @@ $( document ).ready(function(){
       
    function populatePastPresent(){
     var activeDate= moment().format("L")
+    // Milliseconds for time comparisons
+    var nowMilli = moment().unix();
 
     $(".time-block").each(function(){
       var dTime = $(this).attr("data-time");
