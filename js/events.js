@@ -25,17 +25,19 @@ $( document ).ready(function(){
    */  
   //------------------------------
 
-       // Current Date for display
+       // Create a display date with moment.js that represents current date.
     var now = moment();
     var nowFormat = now.format("dddd, MMMM Do");
 
 
-
+      // Populate data-date on on all timeslot section elements.  Make sure current
+      // date shows at top of screen as well.
     $("section").attr("data-date", nowFormat);
     $("#currentDay").text(nowFormat);
     
 
     populatePastPresent();
+    setInterval(function(){ populatePastPresent(); }, 3000);
 
     //------------------------------
    /*
@@ -58,16 +60,26 @@ $( document ).ready(function(){
 
     $(".time-block").each(function(){
       var dTime = $(this).attr("data-time");
+      var next_hour = $(this).attr("data-nextSlot");
       var fullString = activeDate + " " + dTime;
-      
-      if(moment(fullString).unix() < nowMilli){
+      var next_timeSlot = activeDate + " " + next_hour;
+      let e_factor;
+
+      if(nowMilli >= moment(fullString).unix() && nowMilli <= moment(next_timeSlot).unix() ){
+        $(this).find("span").css("background-color", "orange");
+        $(this).find("span").css("height", "50px");
+        $(this).find("span").css("width", "50px");
+        e_factor = 1
+       }
+    
+      if(moment(fullString).unix() < nowMilli && e_factor != 1){
         $(this).find("span").css("background-color", "#ff9999");
       }
-      else{
+      else if(moment(fullString).unix() > nowMilli && e_factor != 1){
         $(this).find("span").css("background-color", "#20B2AA");
-      }
-   });   
-    }  
+  }
+  })};   
+     
 
   
 /*      

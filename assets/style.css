@@ -68,6 +68,9 @@ border: none;
   color: #3481ab;
   }
 
+.greyText{
+  line-height: 1.8;
+}
 
 .modal-header{
 background-color: #3481ab;
