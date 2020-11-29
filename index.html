@@ -27,16 +27,17 @@
   </head>
 
   <body>
+    <!--Header element #currentDay is populated by date on DOM ready by events.js.-->
     <header class="jumbotron">
       <img src="./img/white_calendar.png" style="height:130px; width:130px;"/>
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container-fluid">
-      
+    
+      <div class="container-fluid">
       <!-- All timeblocks are contained within this <main> element -->
-        <main class="container-fluid">                      <!--<main class="blockWrapper">-->
+        <main class="container-fluid">                      
           <!-- 8:00 am -->
           <section class="time-block shadow" id="8" data-date="" data-time="8:00 am" data-nextSlot="9:00 am" data-order="1">
 
