@@ -33,7 +33,8 @@ $( document ).ready(function(){
    populatePastPresent();
 
    PURPOSE: Compares times to current time, and changes the background
-   color of each timeblock circle according to past and future.
+   color of each timeblock circle.  If past, light red.  If current, bigger
+   circle and orange.  If future, green.
 
    PARAMETERS: N/A
 
@@ -50,7 +51,7 @@ $( document ).ready(function(){
     $(".time-block").each(function(){
       // there are two programmer-defined data attributes in each section element
       // that are used to judge if the particular .time-block is "current". In more concrete
-      // language, each loop run judges if the current time MIGHT fall between, say,
+      // language, each loop-run judges if the current time MIGHT fall between, say,
       // "data-time" 1/1/2020 8:00 am and "data-nextSlot" 1/1/2020 9:00 am.  This is
       // how the circles in each time slot are colored to represent wheter the time
       // block is past, present, or future.
@@ -61,22 +62,24 @@ $( document ).ready(function(){
       var next_timeSlot = activeDate + " " + next_hour;
       let e_factor;
       
-      // Compare now to each time slot
+      // Compare current time (nowMilli) to .timeBlock time and next hour.
+      // If time block is CURRENT
       if(nowMilli >= moment(fullString).unix() && nowMilli <= moment(next_timeSlot).unix() ){
         $(this).find("span").css("background-color", "orange");
         $(this).find("span").css("height", "50px");
         $(this).find("span").css("width", "50px");
         e_factor = 1
        }
-    
+      // If time block is PAST
       if(moment(fullString).unix() < nowMilli && e_factor != 1){
         $(this).find("span").css("background-color", "#ff9999");
       }
+      // If time block is FUTURE
       else if(moment(fullString).unix() > nowMilli && e_factor != 1){
         $(this).find("span").css("background-color", "#20B2AA");
   }
   })};   
-     // ****** End of populatePastPresent() function.
+     // ****** End of populatePastPresSent() function.
 
   
 /*      
