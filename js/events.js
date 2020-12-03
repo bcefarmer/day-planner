@@ -49,12 +49,14 @@ $( document ).ready(function(){
     var nowMilli = moment().unix();
 
     $(".time-block").each(function(){
-      // there are two programmer-defined data attributes in each section element
-      // that are used to judge if the particular .time-block is "current". In more concrete
-      // language, each loop-run judges if the current time MIGHT fall between, say,
-      // "data-time" 1/1/2020 8:00 am and "data-nextSlot" 1/1/2020 9:00 am.  This is
-      // how the circles in each time slot are colored to represent wheter the time
-      // block is past, present, or future.
+      /*
+      There are two programmer-defined data attributes in each section element.
+      These are used to judge if the particular .time-block is "current". In more concrete
+      language, each loop-iteration judges if the current time MIGHT fall between, say,
+      "data-time" 1/1/2020 8:00 am and "data-nextSlot" 1/1/2020 9:00 am.  This is
+      how the circles in each time slot are colored to represent whehter the time
+      block is past, present, or future.
+      */
       
       var dTime = $(this).attr("data-time");
       var next_hour = $(this).attr("data-nextSlot");
