@@ -231,11 +231,12 @@ $("#insertEvent").on("click", function(event){
 function alter_localStorageObject(){
    let event_array = [];
    $("section").each( function(){
-   //var current_section = $(this);
-        if( $(this)[0].children[0].childNodes[3].children[0].innerHTML != null && $(this)[0].children[0].childNodes[3].children[0].innerHTML != undefined && $(this)[0].children[0].childNodes[3].children[0].innerHTML != null  && $(this)[0].children[0].childNodes[3].children[0].innerHTML != "" ){
+     
+
+                      if( $(this).find("p.greyText").text() != null && $(this).find("p.greyText").text() != undefined && $(this).find("p.greyText").text() != "" ){
                         var currentLine = {
                                             "id" :  $(this)[0].id  , 
-                                            "eventText" : $(this)[0].children[0].childNodes[3].children[0].innerHTML, 
+                                            "eventText" : $(this).find("p.greyText").html(), 
                                           };
                         event_array.push(currentLine);
                        }
