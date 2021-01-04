@@ -1,3 +1,6 @@
+# Current Day Planner: Local Browser Storage
+(https://bcefarmer.github.io/day-planner/)
+
 ## PURPOSE:
 The day-planning app allows a user to create a schedule for the current day, and to have these events save to local storage.
 
